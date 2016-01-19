@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  
+  devise_for :users
   root 'expenses#index'
   
   resources :expenses, only: [:index]

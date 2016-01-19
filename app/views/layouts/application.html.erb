@@ -17,15 +17,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">mis<strong>finanzas</strong></a>
+        <a class="navbar-brand" href="#">mis<strong>finanzas</strong></a>               
       </div>
-
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+          <li><%= current_user.email %></li>
+          <li><%= link_to "Nuevo Pin", root_path %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li><%= link_to "Registrarse", new_user_registration_path %></li>
+          <li><%= link_to "Ingresar", new_user_session_path %></li>
+        <% end %>
+      </ul>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Gastos <span class="sr-only">(current)</span></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
+         
     </div><!-- /.container-fluid -->
   </nav>
 
